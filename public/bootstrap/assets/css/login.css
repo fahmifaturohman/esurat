@@ -93,6 +93,7 @@
 			letter-spacing: 1px;
 			text-transform: uppercase;
 			transition: transform 80ms ease-in;
+			-webkit-box-shadow: 10px 15px 14px -15px rgba(0, 0, 0, 0.91);
 		}
 
 		button:active {
@@ -104,10 +105,10 @@
 		}
 
         button:hover {
+			background-color: #45995E;
             cursor: pointer;
-            border: 2px solid orange;
-            background: none;
-            color:#555;
+            border: none;
+            color:#fff;
         }
 
 		button.ghost {
