@@ -16,3 +16,9 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+application/config/database.php
+application/config/config.php
+public/js-view/core-function.js
+public/upload/keluar/*
+public/upload/masuk/*
+.gitignore
