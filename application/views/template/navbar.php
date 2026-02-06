@@ -4,7 +4,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <a href="<?=base_url()?>" class="logo">
-            <img src="<?=dirImage("app-logo-new")?>" alt="pta bandar lampung" width="42">
+            <img src="<?=dirImage("app-logo-new.png")?>" alt="pta bandar lampung" width="42">
             <span style="color:#113B63">esurat</span></a>           
     </div>
 

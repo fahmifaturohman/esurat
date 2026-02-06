@@ -25,11 +25,12 @@ class HomeModel extends CI_Model
     }
 
     public function getSpt() {
-        $this->db->from('view_spt');
-        $this->db->where(['deleted' => 0, 'YEAR(tgl)' => CURRENT_YEAR]);
-        $this->db->order_by('id_spt', 'DESC');
-        $this->db->limit(5);
-        return $this->db->get()->result();
+        // $this->db->from('view_spt');
+        // $this->db->where(['deleted' => 0, 'YEAR(tgl)' => CURRENT_YEAR]);
+        // $this->db->order_by('id_spt', 'DESC');
+        // $this->db->limit(5);
+        // return $this->db->get()->result();
+        return 1;
     }
 
   

@@ -112,14 +112,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data['dataspt'] as $key) { ?>
+                                    <!-- <?php foreach ($data['dataspt'] as $key) { ?>
                                     <tr>
                                         <th class="text-muted"><?=$key->spt_tipe?></th>
                                         <td><?=$key->peserta?></td>
                                         <td><?=strdateindo($key->tgl)?></td>
                                         <td><span><?=$key->nama?></span></td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php } ?> -->
                                 </tbody>
                             </table>
                         </div>
