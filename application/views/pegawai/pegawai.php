@@ -7,7 +7,7 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                            <button class="btn btn-purple waves-effect waves-light btn-sm btn-perbarui-pegawai-pta-siger">
+                            <button class="btn btn-purple btn-md waves-effect waves-light btn-perbarui-pegawai-pta-siger">
                             <i class="ion-refresh m-r-5"></i> <span>Perbarui Data Pegawai by SIPPERADING</span> 
                             </button>
                         </h4>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <table id="dataTableServer" class="table dt-responsive table-striped" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="dataTableServer" class="table dt-responsive table-striped table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
                                 <th>No</th>

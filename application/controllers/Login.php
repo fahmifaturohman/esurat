@@ -41,25 +41,9 @@ class Login extends CI_Controller
                     $res['success'] = true;
                     $res['msg'] = "berhasil login";
                 }
-
-                #user sipecut
                 else {
-                    $auth_sipecut = $this->model->auth_sistemcuti($param);
-                    if($auth_sipecut) {
-                        $this->session->set_userdata([
-                            MY_SESSION_DATA => $auth_sipecut, 
-                             MY_SESSION_THANG => CURRENT_YEAR,
-                            MY_SESSION_THANG_LABEL => "Data Tahun ".CURRENT_YEAR,
-                            MY_SESSION_BY => "esurat",
-                            MY_SESSION_LOGGED => true
-                        ]);
-                        $res['success'] = true;
-                        $res['msg'] = "berhasil login";
-                    }
-                    else {
-                        $res['success'] = false;
-                        $res['msg'] = "username atau password salah";
-                    }
+                    $res['success'] = false;
+                    $res['msg'] = "username atau password salah";
                 }
             }
             else {

@@ -41,7 +41,7 @@
                     <?=$active = ($page == "izin-keluar" || $page == "izin-keluar") ? "active subdrop":"";?>">
                     <i class="zmdi zmdi-collection-text"></i> <span>Izin</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li class="<?=$active = ($page == "izin-keluar") ? "active":""; ?>"><a href="<?=base_url()?>izinkeluar">Izin Keluar Kantor</a></li>
+                        <!-- <li class="<?=$active = ($page == "izin-keluar") ? "active":""; ?>"><a href="<?=base_url()?>izinkeluar">Izin Keluar Kantor</a></li> -->
                     </ul>
                 </li>
 
@@ -54,7 +54,7 @@
                     <?=$active = ($page == "suratkeluar") ? "active subdrop":"";?>">
                     <i class="zmdi zmdi-email"></i> <span>Surat Keluar</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li class="<?=$active = ($page == "suratkeluar") ? "active":""; ?>"><a href="<?=base_url()?>suratkeluar">Surat Keluar</a></li>
+                        <!-- <li class="<?=$active = ($page == "suratkeluar") ? "active":""; ?>"><a href="<?=base_url()?>suratkeluar">Surat Keluar</a></li> -->
                         <!-- <li class="<?=$active = ($page == "spt") ? "active":""; ?>"><a href="<?=base_url()?>spt">Surat Perintah Tugas</a></li> -->
                     </ul>
                 </li>

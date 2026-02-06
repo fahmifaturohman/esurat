@@ -7,8 +7,8 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                            <a href="#" class="btn waves-effect waves-light btn-sm btn-blue btn-add" data-toggle="modal">
-                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah</span> 
+                            <a href="#" class="btn waves-effect waves-light btn-md btn-purple btn-add" data-toggle="modal">
+                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah Klasifikasi Surat</span> 
                             </a>
                         </h4>
                         <ol class="breadcrumb float-right">
@@ -30,7 +30,7 @@
                         <p class="text-muted font-14 m-b-30">
                             DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>.
                         </p> -->
-                        <table id="dataTableServer" class="table dt-responsive table-striped" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="dataTableServer" class="table dt-responsive table-striped table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
                                 <th>Aksi</th>
@@ -156,8 +156,8 @@
                 {"data": function(data,type,dataToSet) {
                         str = `<td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a type="button" class="btn waves-effect waves-light btn-sm btn-primary btn-edit" data-toggle="modal" data-id="${data.id}"><i class="ion-edit"></i></a>
-                                        <a type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id}" data-isi ="${data.nama}"><i class="ion-trash-a"></i></a>
+                                        <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-primary btn-edit" data-toggle="modal" data-id="${data.id}"><i class="ion-edit"></i></a>
+                                        <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id}" data-isi ="${data.nama}"><i class="ion-trash-a"></i></a>
                                     </div>
                                 </td>`
                         return str
