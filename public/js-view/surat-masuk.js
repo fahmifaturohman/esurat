@@ -10,6 +10,14 @@ $(document).ready(function () {
         else error(this, "*wajib diisi")
     })
 
+    $(document).on('change','.check-input-manual', function(){
+        if($(this).is(':checked')) {
+            $('#input-no-agenda').removeAttr('readonly').val($(this).val()).focus()
+        } else {
+            $('#input-no-agenda').attr('readonly', 'readonly')
+        }
+    })
+
     $('.select2-kode').select2({
         closeOnSelect: true,
         ajax : {
@@ -27,6 +35,54 @@ $(document).ready(function () {
                         return {
                             text: item['kode']+' - '+item['nama'],
                             id: item['id']
+                        }
+                    })
+                };
+            }
+        }
+    });
+       
+    $('.select2-asal-surat').select2({
+        closeOnSelect: true,
+        ajax : {
+            dataType: 'json',
+              url: baseUrl+'asaltujuan/cariTujuan',
+              delay: 800,
+              data: function(asal) {
+                return {
+                  search: asal.term
+                }
+              },
+              processResults: function (data) {
+                return {
+                    results: $.map(data['data'], function (item) {
+                        return {
+                            text: item['asal_tujuan']+' - '+item['alamat'],
+                            id: item['id_asal_tujuan']
+                        }
+                    })
+                };
+            }
+        }
+    });
+
+    $('.select2-tujuan-surat').select2({
+        closeOnSelect: true,
+        ajax : {
+            dataType: 'json',
+              url: baseUrl+'asaltujuan/cariTujuan',
+              delay: 800,
+              data: function(tujuan) {
+                return {
+                  search: tujuan.term
+                }
+              },
+              processResults: function (data) {
+                return {
+                    results: $.map(data['data'], function (item) {
+                        return {
+                            text: item['asal_tujuan']+' - '+item['alamat'],
+                            id: item['id_asal_tujuan']
                         }
                     })
                 };
@@ -72,6 +128,14 @@ $(document).ready(function () {
         })
 
         if(valid) postAjax("pimpinan/edit", "#form-update")          
+    })
+
+    $(document).on("click",".btn-add", function(e) {
+        let id = $(this).attr('data-id')
+        let isi= $(this).attr('data-isi')
+        $('#modal-delete').find('.text-modal').text(isi)
+        $('#modal-delete').find('.id').val(id)
+        $('#modal-add').modal("show")
     })
 
     $(document).on("click", ".btn-delete", function(e) {

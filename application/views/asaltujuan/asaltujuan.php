@@ -7,8 +7,8 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                            <a href="#" class="btn btn-blue waves-effect waves-light btn-sm btn-add" data-toggle="modal">
-                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah</span> 
+                            <a href="#" class="btn waves-effect waves-light btn-md btn-purple btn-add" data-toggle="modal">
+                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah Asal/Tujuan Surat</span> 
                             </a>
                         </h4>
                         <ol class="breadcrumb float-right">
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <table id="dataTableServer" class="table dt-responsive table-striped" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="dataTableServer" class="table dt-responsive table-striped table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
                                 <th>Aksi</th>
@@ -147,8 +147,8 @@
                 { data: function(data,type,dataToSet) {
                         str = `<td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a type="button" class="btn waves-effect waves-light btn-sm btn-primary btn-edit" data-toggle="modal" data-id="${data.id_asal_tujuan}"><i class="ion-edit"></i></a>
-                                        <a type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id_asal_tujuan}" data-isi ="${data.asal_tujuan}"><i class="ion-trash-a"></i></a>
+                                        <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-primary btn-edit" data-toggle="modal" data-id="${data.id_asal_tujuan}"><i class="ion-edit"></i></a>
+                                        <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id_asal_tujuan}" data-isi ="${data.asal_tujuan}"><i class="ion-trash-a"></i></a>
                                     </div>
                                 </td>`
                         return str

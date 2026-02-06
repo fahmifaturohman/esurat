@@ -40,6 +40,7 @@
 
         <!-- App CSS -->
         <link href="<?=dirTemplate()?>css/style.css" rel="stylesheet" type="text/css" />
+        <link href="<?=dirTemplate()?>css/custom.css" rel="stylesheet" type="text/css" />
         
         <!--loading-->
 	    <link rel="stylesheet" href="<?=dirPlugin()?>loading/css/jquery.loadingModal.css">
@@ -59,77 +60,6 @@
         <!-- jquery typehead -->
         <script src="<?=dirTemplate()?>js/jquery.min.js"></script>
         <script src="<?=dirPlugin()?>typehead/typeahead.js"></script>
-        <style>
-            .btn-orange {
-                background: darkorange !important;
-                color:#f3f3f3;
-            }
-            .btn-orange:hover {
-                background: #FBA500 !important;
-                color:#f3f3f3;
-            }
-
-            .btn-orange-light {
-                background: #FBE604 !important;
-                color: #2d3436;
-            }
-
-            .btn-orange-light:hover {
-                background: orange !important;
-                color: #f3f3f3;
-            }
-
-            .btn-blue {
-                background: #0050DB !important;
-                color: #f3f3f3;
-            }
-
-            .btn-blue:hover {
-                background: #00479F !important;
-                color: #f3f3f3;
-            }
-
-            .button-login {
-                padding-top: 0.8rem;
-                padding-bottom: 0.8rem;
-                background-image: linear-gradient(to right, #0d0255, #270157, #380158, #460359, #53075a);
-            }
-
-            .button-login:hover {
-                padding-top: 0.8rem;
-                padding-bottom: 0.8rem;
-                background-image: none !important;
-                border:2px linear-gradient(to right, #0d0255, #270157, #380158, #460359, #53075a) !important;
-            }
-
-            #from-login input {
-                height: 3rem !important;
-            }
-            .modal-header {
-                background: #007bb6 !important;
-                color: #f3f3f3;
-            }
-
-            /* width */
-            ::-webkit-scrollbar {
-            width: 5px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1; 
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-            background: #FBE604; 
-            }
-            
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-            background: #FBA500; 
-            }
-        </style>
     </head>
 
 

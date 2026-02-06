@@ -7,9 +7,12 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                           <a href="<?=base_url($page)?>/add" class="btn btn-dark waves-effect waves-light btn-sm">
-                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah</span> 
+                           <a href="<?=base_url($page)?>/add" class="btn btn-purple btn-md waves-effect waves-light btn-sm">
+                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah Surat Masuk</span> 
                             </a> 
+                            <!-- <a href="#" class="btn btn-purple waves-effect waves-light btn-sm btn-add">
+                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah Surat Masuk</span> 
+                            </a>  -->
                         </h4>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="<?=base_url()?>suratmasuk"><?=$title;?></a></li>
@@ -50,6 +53,34 @@
     </div> <!-- content -->
 </div>
 
+<div class="modal fade" id="modal-add" tabindex="-1" role="dialog" data-backdrop="static" aria-label="modal1">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title" id="myModalLabel-2">FORM TAMBAH SURAT MASUK</h6>
+			</div>
+            <form id="form-add">
+			<div class="modal-body">
+                <div class="form-group">
+                    <label for="input-cari-pegawai">Pegawai</label>
+                    <input type="hidden" name="id" id="id"> 
+                    <input type="text" name="id_pegawai" class="form-control typeahead input-id-pegawai" id="input-cari-pegawai" placeholder="cari pegawai" autocomplete="off">
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="input-note-modal">Catatan</label>
+                    <textarea name="note" id="input-note" cols="30" rows="3" class="form-control"></textarea>
+                    <span class="text-danger"></span>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Update</button>
+			</div>
+            </form>
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-2">
 	<div class="modal-dialog modal-md" role="document">

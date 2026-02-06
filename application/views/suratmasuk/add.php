@@ -53,7 +53,7 @@
                                             <div class="form-group"> 
                                                 <label>Asal Surat</label> 
                                                 <select name="asal_surat" id="input-asal-surat" class="form-control select2 select2-asal-surat select2-hidden-accessible input-rahasia" tabindex="-1" aria-hidden="true">
-                                                </select> 
+                                                </select>
                                                 <span class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="form-group"> 
                                                 <label>Tujuan Surat</label> 
-                                                <select name="tujuan" id="input-tujuan" class="form-control select2 select2-tujuan select2-hidden-accessible input-rahasia" tabindex="-1" aria-hidden="true">
+                                                <select name="tujuan" id="input-tujuan" class="form-control select2 select2-tujuan-surat select2-hidden-accessible" tabindex="-1" aria-hidden="true">
                                                 </select> 
                                                 <span class="text-danger"></span>
                                             </div>

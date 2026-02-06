@@ -9,7 +9,6 @@ class LoginModel extends CI_Model
 
     public function __construct() {
         parent::__construct();
-        $this->db2 = $this->load->database('db2', TRUE);
     }
 
     public function rules() {

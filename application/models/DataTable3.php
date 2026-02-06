@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
+#[AllowDynamicProperties]
 class DataTable3 extends CI_Model
 {
     

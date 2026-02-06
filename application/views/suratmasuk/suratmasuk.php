@@ -7,7 +7,7 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                           <a href="<?=base_url($page)?>/add" class="btn btn-dark waves-effect waves-light btn-sm">
+                           <a href="<?=base_url($page)?>/add" class="btn btn-purple btn-md waves-effect waves-light">
                             <i class="ion-plus-circled m-r-5"></i> <span>Tambah</span> 
                             </a> 
                         </h4>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">                       
-                        <table id="viewTable" class="table dt-responsive table-striped" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="viewTable" class="table dt-responsive table-striped table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
                                <th>No</th>
@@ -91,7 +91,6 @@
 
     </div> <!-- content -->
 </div>
-
 
 <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-2">
 	<div class="modal-dialog modal-md" role="document">

@@ -26,7 +26,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-layers float-right text-muted"></i>
-                        <h6 class="text-muted text-uppercase m-b-20">SPT KEGIATAN</h6>
+                        <h6 class="text-muted text-uppercase m-b-20">TOTAL SURAT MASUK</h6>
                         <h2 class="m-b-20" data-plugin="counterup"><?=$data['spt_kegiatan']?></h2>
                         <span class="badge badge-success"><?=$data['spt_kegiatan_persen']?> % </span> <span class="text-muted">Tahun <?=CURRENT_YEAR?></span>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-paypal float-right text-muted"></i>
-                        <h6 class="text-muted text-uppercase m-b-20">SPT PLH</h6>
+                        <h6 class="text-muted text-uppercase m-b-20">TOTAL SURAT KELUAR</h6>
                         <h2 class="m-b-20"><span data-plugin="counterup"><?=$data['spt_plh']?></span></h2>
                         <span class="badge badge-danger"><?=$data['spt_plh_persen']?> % </span> <span class="text-muted">Tahun <?=CURRENT_YEAR?></span>
                     </div>
@@ -44,7 +44,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-chart float-right text-muted"></i>
-                        <h6 class="text-muted text-uppercase m-b-20">SPT DIKLAT</h6>
+                        <h6 class="text-muted text-uppercase m-b-20">TOTAL SURAT DITOLAK</h6>
                         <h2 class="m-b-20"><span data-plugin="counterup"><?=$data['spt_diklat']?></span></h2>
                         <span class="badge badge-pink"><?=$data['spt_diklat_persen']?> % </span> <span class="text-muted">Tahun <?=CURRENT_YEAR?></span>
                     </div>
@@ -53,7 +53,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div class="card-box tilebox-one">
                         <i class="icon-rocket float-right text-muted"></i>
-                        <h6 class="text-muted text-uppercase m-b-20">TOTAL SPT</h6>
+                        <h6 class="text-muted text-uppercase m-b-20">TOTAL SURAT DI APPROVE</h6>
                         <h2 class="m-b-20" data-plugin="counterup"><?=$data['spt']?></h2>
                         <span class="text-muted">Tahun <?=CURRENT_YEAR?></span>
                     </div>
@@ -149,27 +149,31 @@ var chart = new CanvasJS.Chart("chart-spt", {
 	animationEnabled: true,
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	title: {
-		text: "Grafik Custom"
+		text: "Grafik Surat Tahun 2026"
 	},
 	axisY: {
-		title: "Growth Rate (in %)",
-		suffix: "%"
+		title: "Jumlah/bulan",
+		suffix: ""
 	},
 	axisX: {
-		title: "Countries"
+		title: "Bulan"
 	},
 	data: [{
 		type: "column",
 		yValueFormatString: "#,##0.0#\"%\"",
 		dataPoints: [
-			{ label: "India", y: 7.1 },	
-			{ label: "China", y: 6.70 },	
-			{ label: "Indonesia", y: 5.00 },
-			{ label: "Australia", y: 2.50 },	
-			{ label: "Mexico", y: 2.30 },
-			{ label: "UK", y: 1.80 },
-			{ label: "United States", y: 1.60 },
-			{ label: "Japan", y: 1.60 }
+			{ label: "Januari", y: 7.1 },	
+			{ label: "Februari", y: 6.70 },	
+			{ label: "Maret", y: 5.00 },
+			{ label: "April", y: 2.50 },	
+			{ label: "Mei", y: 2.30 },
+			{ label: "Juni", y: 1.80 },
+			{ label: "Juli", y: 1.60 },
+			{ label: "Agustus", y: 1.60 },
+            { label: "September", y: 1.60 },
+            { label: "Oktober", y: 1.60 },
+            { label: "November", y: 1.60 },
+            { label: "Desember", y: 1.60 }
 			
 		]
 	}]

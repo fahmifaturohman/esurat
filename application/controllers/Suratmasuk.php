@@ -14,7 +14,7 @@ class Suratmasuk extends CI_Controller
         $this->page = "suratmasuk";
         $this->load->model("SuratMasukModel", "model");
         $this->load->model("DisposisiModel", "model2");
-        $this->load->model("PegawaiSipecutModel", "model3");
+        // $this->load->model("PegawaiSipecutModel", "model3");
         $this->load->model("DataTable", "dataTable");
         isLogin();
     }
