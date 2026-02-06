@@ -21,3 +21,4 @@ application/config/config.php
 public/js-view/core-function.js
 public/upload/keluar/*
 public/upload/masuk/*
+.gitignore
