@@ -142,7 +142,9 @@ function postAjaxLogin(myurl = "", id = "", param = "") {
 function error(id,msg){
 	$(id).addClass('no-valid');
 	$(id).parent().find('.text-danger').show();
-	$(id).parent().find('.text-danger').text(msg);		
+	$(id).parent('.input-group').find('.text-danger').text(msg);
+	$(id).parent('.input-group').find('.text-danger').show();
+	$(id).parent().find('.text-danger').text(msg);			
 	$(id).closest('input').removeClass('is-valid');
 	$(id).closest('input').addClass('is-invalid');
 	$(id).closest('select').removeClass('is-valid');
@@ -157,6 +159,8 @@ function success(id)
 {	
 	$(id).removeClass('no-valid');
 	$(id).parent().find('.text-danger').hide();		
+	$(id).parent('.input-group').find('.text-danger').text('');
+	$(id).parent('.input-group').find('.text-danger').hide();
 	$(id).closest('input').removeClass('is-invalid')
 	$(id).closest('select').removeClass('is-invalid')
 	$(id).closest('textarea').removeClass('is-invalid');

@@ -42,9 +42,9 @@ class Suratmasuk extends CI_Controller
             $search = array('nama','username','tahun', 'perihal', 'no_surat', 'sifat_surat', 'asal_tujuan');
             $where  = [
                 'c.deleted' => 0,
-                //'c.tahun' => CURRENT_YEAR,
                 'a.id_profile' => ID_INSTANSI
             ];
+            if(my_filter_year() != 'all') $where += ['c.tahun' => my_filter_year()];
             header('Content-Type: application/json');
             echo $this->dataTable->get_tables_query($query,$search,$where,NULL);
     }
@@ -184,7 +184,8 @@ class Suratmasuk extends CI_Controller
     /* VALIDASI */
     public function validnoagenda($search = null) {
         $no_agenda = urldecode($search);
-        $row = $this->model-> getNoAgenda($no_agenda);
+        $year = my_filter_year() != 'all' ? my_filter_year() : CURRENT_YEAR;
+        $row = $this->model->getNoAgenda($no_agenda, $year);
         if($row) {
             $res['success'] = true;
             $res['msg'] = "no agenda sudah digunakan, silahkan gunakan kode yang lain";  
@@ -322,6 +323,21 @@ class Suratmasuk extends CI_Controller
             echo json_encode($res);
 
         }
+    }
+
+
+    //search//
+    public function getNoAgenda() {
+        $year = my_filter_year() != 'all' ? my_filter_year() : CURRENT_YEAR;
+        $data = $this->model->checkNoAgenda($year);
+        if($data) {
+            $no_agenda = $data->no_agenda + 1;
+        }
+        else $no_agenda = '000';
+        $next_number = $no_agenda == '000' ? '001' : str_pad((int)$no_agenda, 4, '0', STR_PAD_LEFT);
+        $res['success'] = true;
+        $res['data'] = $next_number;
+        echo json_encode($res);
     }
 
 

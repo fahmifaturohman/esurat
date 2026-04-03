@@ -67,42 +67,62 @@
                     <input type="hidden" id="input-sifat" value="biasa">
                 </div>
                 <p></p>
-                <div class="row" id="form-rahasia">
-                    <div class="col-12">
+                <div class="form-group">
+                    <label for="input-kode-agenda">Kode Agenda</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="kode_agenda" id="input-kode-agenda" placeholder="Masukkan kode agenda">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-agenda-auto" type="button"><i class="fa fa-refresh"></i></button>
+                            <button class="btn btn-success btn-agenda-manual" type="button">Input Manual</button>
+                        </div>
+                        <span class="text-danger"></span>
+                    </div>                    
+                </div>
+                <div class="row" id="form-biasa">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="input-kode-agenda">Kode Agenda</label>
+                            <label>Nomor Surat Masuk</label> 
+                            <input type="text" name="nomor_surat" class="form-control" id="input-nomor-surat" placeholder="Masukkan nomor surat Masuk" autocomplete="off">
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Surat</label> 
                             <div class="input-group">
-                            <input type="text" class="form-control" name="kode_agenda" id="input-kode-agenda" placeholder="Masukkan kode agenda">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary btn-agenda-auto" type="button"><i class="fa fa-refresh"></i></button>
-                                <button class="btn btn-success btn-agenda-manual" type="button">Input Manual</button>
+                                <input type="text" name="tanggal_surat" class="form-control datepicker-surat" id="input-tanggal-surat" placeholder="Masukkan tanggal surat" autocomplete="off">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="icon-calender"></i></span>
+                                </div>                                
                             </div>
+                            <span class="col-12 text-danger row"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-cari-asal">Asal Surat</label>
+                            <div class="input-group">
+                                <input type="hidden" name="id_asal" id="id_asal"> 
+                                <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat" placeholder="cari asal surat" autocomplete="off">
+                                <div class="input-group-append">
+                                    <a target="_blank" href="<?= base_url('asaltujuan') ?>" class="btn btn-success" type="button"><i class="fa fa-plus"></i></a>
+                                </div>
+                                 <span class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-cari-tujuan">Tujuan Surat</label>
+                            <input type="hidden" name="id_tujuan" id="id_tujuan"> 
+                            <input type="text" name="tujuan_surat" class="form-control typeahead input-tujuan-surat" id="input-cari-tujuan-surat" placeholder="cari tujuan surat" autocomplete="off">
                             <span class="text-danger"></span>
                         </div>
                     </div>
                 </div>
-                <div class="row" id="form-biasa">
-                    <div class="col-12">
-                        
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label for="input-cari-pegawai">Pegawai</label>
-                    <input type="hidden" name="id" id="id"> 
-                    <input type="text" name="id_pegawai" class="form-control typeahead input-id-pegawai" id="input-cari-pegawai" placeholder="cari pegawai" autocomplete="off">
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label for="input-note-modal">Catatan</label>
-                    <textarea name="note" id="input-note" cols="30" rows="3" class="form-control"></textarea>
+                    <label for="input-note-modal">Perihal/Catatan Surat</label>
+                    <textarea name="note" id="input-note" cols="30" rows="2" class="form-control"></textarea>
                     <span class="text-danger"></span>
                 </div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Update</button>
+				<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Submit</button>
 			</div>
             </form>
 		</div>

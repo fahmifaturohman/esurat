@@ -136,3 +136,10 @@ function my_get_cookie($key) {
     }
     return $val;
 }
+
+function my_filter_year() {
+    $ci = get_instance();
+    $val = $ci->input->cookie(MY_THANG);
+    if(!empty($val)) return $ci->encrypt->decode($val, MY_KEY);
+    else return CURRENT_YEAR;
+}

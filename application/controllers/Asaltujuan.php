@@ -190,4 +190,22 @@ class Asaltujuan extends CI_Controller
         $a = $this->model->insertOrUpdate_asalTujuan($data);
         echo json_encode($a);
     }
+
+     public function caripegawaidanjabatan($name = null) {
+        $name = urldecode($name);
+        $row = $this->model1->getLikeNameJabatan($name);
+        if($row) {
+            $res['success'] = true;
+            $res['message'] = "cari pegawai dan jabatan";
+            $res['data'] = $row;
+        }
+        else {
+            $res['success'] = false;
+            $res['message'] = "cari pegawai dan jabatan";
+            $res['data'] = [];
+        }
+        echo json_encode($res);
+    }
+
+    
 }

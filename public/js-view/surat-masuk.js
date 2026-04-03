@@ -1,14 +1,4 @@
 $(document).ready(function () {
-    
-    $(document).on('keyup','#input-no-agenda', function() {
-        let val = $(this).val()
-        if(val.length > 0) validateAjaxGet(baseUrl+"suratmasuk/validnoagenda/"+val, "#input-no-agenda")
-        else error(this, "*wajib diisi")
-    }).on('blur','#input-no-agenda', function() {
-        let val = $(this).val()
-        if(val.length > 0) validateAjaxGet(baseUrl+"suratmasuk/validnoagenda/"+val, "#input-no-agenda")
-        else error(this, "*wajib diisi")
-    })
 
     $(document).on('change','.check-input-manual', function(){
         if($(this).is(':checked')) {
@@ -156,7 +146,6 @@ $(document).ready(function () {
 
 
     /*button*/
-
     $(document).on('click', '.btn-sifat', function() {
         let id = $(this).attr('data-id')
         $('#input-sifat').val(id)
@@ -165,12 +154,56 @@ $(document).ready(function () {
     $(document).on('click','.btn-agenda-auto', function() {
         $('.btn-agenda-manual').removeClass('btn-success').addClass('btn-outline-secondary')
         $('.btn-agenda-auto').addClass('btn-success').removeClass('btn-outline-secondary')
-        $('#input-kode-agenda').attr('readonly', 'readonly').val('1')
+        success('#input-kode-agenda')
+        $.ajax({
+            url: baseUrl+'suratmasuk/getNoAgenda',
+            method: "GET",
+            dataType: "json",
+            success: function(res) {
+                $('#input-kode-agenda').attr('readonly', 'readonly').val(res['data'])
+                console.log(res['data'])
+            }
+        })
     })
     $(document).on('click','.btn-agenda-manual', function() {
         $('.btn-agenda-auto').removeClass('btn-success').addClass('btn-outline-secondary')
         $('.btn-agenda-manual').removeClass('btn-outline-secondary').addClass('btn-success')
         $('#input-kode-agenda').removeAttr('readonly').val('').focus()
+    })
+    $(document).on('keyup','#input-kode-agenda', function() {
+        let val = $(this).val()
+        if(val.length > 0) validateAjaxGet(baseUrl+"suratmasuk/validnoagenda/"+val, "#input-kode-agenda")
+        else error(this, "*wajib diisi")
+    }).on('blur','#input-kode-agenda', function() {
+        let val = $(this).val()
+        if(val.length > 0) validateAjaxGet(baseUrl+"suratmasuk/validnoagenda/"+val, "#input-kode-agenda")
+        else error(this, "*wajib diisi")
+    })
+
+    $( ".datepicker-surat" ).datepicker({
+        format: 'dd/mm/yyyy', //
+        autoclose: true 
+    })
+    $('.input-asal-surat').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: baseUrl+"asaltujuan/cariTujuan/"+query,
+                dataType: "json",
+                type: "GET",
+                success: function (data) {
+                    let asalTujuan = data['data'];
+                    var arrAsalTujuan = [];
+                    asalTujuan.forEach(el => {
+                       arrAsalTujuan.push(el['asal_tujuan']);
+                    });
+                    
+                    //show autocomplete
+                    result($.map(arrAsalTujuan, function (item) {
+                        return item;
+                    }));
+                }
+            });
+        }
     })
     
     

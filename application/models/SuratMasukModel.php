@@ -76,10 +76,20 @@ class SuratMasukModel extends CI_Model
         return $query->row();
     }
 
-    public function getNoAgenda($no) {
+    public function checkNoAgenda($year) {
+        $this->db->from($this->_table);
+        $this->db->select('no_agenda');
+        $this->db->where(['tahun' => $year]);
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getNoAgenda($no, $year) {
         $this->db->from($this->_table);
         $this->db->select('*');
-        $this->db->where(['tahun' => CURRENT_YEAR, 'no_agenda' => $no]);
+        $this->db->where(['tahun' => $year, 'no_agenda' => $no]);
         $this->db->order_by('id', 'desc');
         $this->db->limit(1);
         $query = $this->db->get();
