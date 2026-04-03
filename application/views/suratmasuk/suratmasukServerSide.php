@@ -7,12 +7,9 @@
                 <div class="col-xl-12">
                     <div class="page-title-box">
                         <h4 class="page-title float-left">
-                           <a href="<?=base_url($page)?>/add" class="btn btn-purple btn-md waves-effect waves-light btn-sm">
+                           <a href="#" class="btn btn-purple waves-effect waves-light btn-sm btn-add">
                             <i class="ion-plus-circled m-r-5"></i> <span>Tambah Surat Masuk</span> 
                             </a> 
-                            <!-- <a href="#" class="btn btn-purple waves-effect waves-light btn-sm btn-add">
-                            <i class="ion-plus-circled m-r-5"></i> <span>Tambah Surat Masuk</span> 
-                            </a>  -->
                         </h4>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="<?=base_url()?>suratmasuk"><?=$title;?></a></li>
@@ -54,13 +51,43 @@
 </div>
 
 <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" data-backdrop="static" aria-label="modal1">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog modal-md" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h6 class="modal-title" id="myModalLabel-2">FORM TAMBAH SURAT MASUK</h6>
 			</div>
             <form id="form-add">
 			<div class="modal-body">
+                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sifat btn-success" data-id = "biasa">SURAT BIASA</button>
+                    <button type="button" class="btn btn-sifat btn-secondary" data-id = "penting">SURAT PENTING</button>
+                    <button type="button" class="btn btn-sifat btn-secondary" data-id = "segera">SURAT SEGERA</button>
+                    <button type="button" class="btn btn-sifat btn-secondary" data-id = "rahasia"><b>SURAT RAHASIA</b></button>
+                    <input type="hidden" id="input-sifat" value="biasa">
+                </div>
+                <p></p>
+                <div class="row" id="form-rahasia">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="input-kode-agenda">Kode Agenda</label>
+                            <div class="input-group">
+                            <input type="text" class="form-control" name="kode_agenda" id="input-kode-agenda" placeholder="Masukkan kode agenda">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary btn-agenda-auto" type="button"><i class="fa fa-refresh"></i></button>
+                                <button class="btn btn-success btn-agenda-manual" type="button">Input Manual</button>
+                            </div>
+                            </div>
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="form-biasa">
+                    <div class="col-12">
+                        
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="input-cari-pegawai">Pegawai</label>
                     <input type="hidden" name="id" id="id"> 

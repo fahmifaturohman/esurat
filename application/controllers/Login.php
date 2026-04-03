@@ -33,8 +33,6 @@ class Login extends CI_Controller
                 if($auth_esurat) {
                     $this->session->set_userdata([
                         MY_SESSION_DATA => $auth_esurat, 
-                        MY_SESSION_THANG => CURRENT_YEAR,
-                        MY_SESSION_THANG_LABEL => "Data Tahun ".CURRENT_YEAR,
                         MY_SESSION_BY => "esurat",
                         MY_SESSION_LOGGED => true
                     ]);
@@ -62,43 +60,10 @@ class Login extends CI_Controller
             $this->load->view('login/login', $data);
         }
     }
-
-    public function thang() {
-        isLogin();
-         if($this->input->server('REQUEST_METHOD') == "POST") {
-            $validation = $this->form_validation;
-            $validation->set_rules($this->model->rules());
-
-            if ($validation->run()) {
-                $post = $this->input->post();
-                $thang = htmlspecialchars($post['thang']);
-                if($thang == "Semua") {
-                    $this->session->set_userdata([MY_SESSION_THANG => ""]);
-                    $this->session->set_userdata([MY_SESSION_THANG_LABEL => "Data 5 Tahun Terakhir"]);
-                }
-                else {
-                    $this->session->set_userdata([MY_SESSION_THANG => $thang]);
-                    $this->session->set_userdata([MY_SESSION_THANG_LABEL => "Data Tahun ".$thang]);
-                }
-                
-                $res['data'] = $thang;
-                $res['success'] = true;
-                $res['msg'] = $thang;
-            }
-            else {
-                $res['success'] = false;
-                $res['msg'] = "Gagal";
-            }
-            echo json_encode($res);
-        }
-    }
-
-   
+  
     public function out() {
         isLogin();
         $this->session->unset_userdata(MY_SESSION_DATA);
-        $this->session->unset_userdata(MY_SESSION_THANG);
-        $this->session->unset_userdata(MY_SESSION_THANG_LABEL);
         $this->session->unset_userdata(MY_SESSION_LOGGED);
         return redirect()->to(base_url());
     }

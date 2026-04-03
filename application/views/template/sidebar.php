@@ -5,7 +5,7 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul>
-                <li class="text-muted menu-title"><?=$this->session->userdata(MY_SESSION_THANG_LABEL);?></li>
+                <li class="text-muted menu-title"><?=my_get_cookie(MY_THANG_LABEL);?></li>
 
                 <li class="has_sub">
                     <a href="<?=base_url()?>" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>

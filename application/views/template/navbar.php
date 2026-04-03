@@ -138,6 +138,32 @@
                         <h5 class="text-overflow"><small><?=$this->session->userdata(MY_SESSION_DATA)->username;?></small> </h5>
                     </div>
 
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" id="button-pilih-tahun">
+                        <i class="zmdi zmdi-calendar"></i> <span>Pilih Tahun</span>
+                    </a>
+
+                    <script type="text/javascript">
+                         $(document).ready(function(){
+                           $('#button-pilih-tahun').on('click', function() {
+                                $('#modal-pilih-tahun').modal('show')
+                            })
+                            $('#form-thang').on('submit', function(e) {
+                                e.preventDefault()
+                                let thang = $('#input-thang').val()
+                                $.ajax({
+                                    url: "<?=base_url()?>home/set_thang",
+                                    method: "POST",
+                                    data: {thang: thang},
+                                    success: function() {
+                                        location.reload()
+                                    }
+                                })
+                            })
+                            if (typeof $.cookie("<?php echo MY_THANG; ?>") === 'undefined') $('#modal-pilih-tahun').modal('show')
+                        })
+                    </script>
+
+
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="zmdi zmdi-account-circle"></i> <span>Profile</span>
@@ -175,3 +201,35 @@
 
 </div>
 <!-- Top Bar End -->
+
+<div class="modal fade" id="modal-pilih-tahun" tabindex="-1" role="dialog" data-backdrop="static" aria-label="modal1">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="myModalLabel-2">Pilih Tahun</h6>
+            </div>
+            <form id="form-thang">
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="input-cari-pegawai">Pilih Tahun</label>
+                    <select class="form-control" id="input-thang" name="thang>
+                        <?php
+                            $thang_selected = my_get_cookie(MY_THANG);
+                            $thangs = date("Y")+1;for ($i = $thangs; $i >= $thangs-5; $i--) { 
+                        ?>
+                        <option value="<?=$i?>" <?= ($i == $thang_selected) ? 'selected':''; ?>>Tampilkan Data Tahun <?=$i;?></option>
+                        <?php } ?>
+                       <option value="all">Tampilkan Semua Data</option>
+                    </select>
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

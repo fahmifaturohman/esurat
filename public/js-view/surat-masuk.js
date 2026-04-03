@@ -154,6 +154,24 @@ $(document).ready(function () {
         postAjax("pimpinan/delete", ".btn-delete-yes", {'id':id}, 0)
     })
 
+
+    /*button*/
+
+    $(document).on('click', '.btn-sifat', function() {
+        let id = $(this).attr('data-id')
+        $('#input-sifat').val(id)
+        $(this).addClass('btn-success').removeClass('btn-secondary').siblings().removeClass('btn-success').addClass('btn-secondary')
+    })
+    $(document).on('click','.btn-agenda-auto', function() {
+        $('.btn-agenda-manual').removeClass('btn-success').addClass('btn-outline-secondary')
+        $('.btn-agenda-auto').addClass('btn-success').removeClass('btn-outline-secondary')
+        $('#input-kode-agenda').attr('readonly', 'readonly').val('1')
+    })
+    $(document).on('click','.btn-agenda-manual', function() {
+        $('.btn-agenda-auto').removeClass('btn-success').addClass('btn-outline-secondary')
+        $('.btn-agenda-manual').removeClass('btn-outline-secondary').addClass('btn-success')
+        $('#input-kode-agenda').removeAttr('readonly').val('').focus()
+    })
     
     
 

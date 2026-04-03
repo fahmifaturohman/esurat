@@ -121,3 +121,18 @@ function timerangeIndo($date) {
     $str = $dari.' s.d '.$sampai;
     return $str;
 }
+
+
+function my_crypt($string) {
+    $ci = get_instance();
+    return $ci->encrypt->encode($string, MY_KEY);
+}
+
+function my_get_cookie($key) {
+    $ci = get_instance();
+    $val = $ci->input->cookie($key, true);
+    if(!empty($val)) {
+        $val = $ci->encrypt->decode($val, MY_KEY);
+    }
+    return $val;
+}
