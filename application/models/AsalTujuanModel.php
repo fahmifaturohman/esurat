@@ -44,6 +44,14 @@ class AsalTujuanModel extends CI_Model
         return $query->result(); 
     }
 
+    public function getLikeTujuanSurat($name) {
+        $this->db->from('`tb_tujuan`');
+        $this->db->like('nama_tujuan', $name);
+        $this->db->limit(5);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function save() {
         $post = $this->input->post();
         $this->asal_tujuan = $post["asal_tujuan"];

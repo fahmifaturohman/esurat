@@ -14,7 +14,7 @@ class SuratMasukModel extends CI_Model
     public $status;
     public $tujuan;
     public $kode_surat;
-    public $index;
+    public $indeks;
     public $disposisi;
     public $tahun;
     public $deleted;
@@ -23,13 +23,8 @@ class SuratMasukModel extends CI_Model
     public function rules() {
         return [
             [
-                'field' =>  'no_surat',
-                'label' => 'no_surat',
-                'rules' => 'required'
-            ],
-            [
-                'field' =>  'tgl_surat',
-                'label' => 'tgl_surat',
+                'field' =>  'kode_agenda',
+                'label' => 'kode_agenda',
                 'rules' => 'required'
             ],
         ];
@@ -96,22 +91,63 @@ class SuratMasukModel extends CI_Model
         return $query->row();
     }
     
-    
-    
-
-
-    public function save($id_pegawai = "", $parent = "") {
+    public function save() {
         $post = $this->input->post();
-        $this->bagian = $post['bagian'];
-        $this->parent = $parent;
+        $this->no_surat = $post['nomor_surat'];
+        $this->tgl_surat = date('Y-m-d', strtotime($post['tanggal_surat']));
+        $this->tanggal_terima = date('Y-m-d');
+        $this->asal_surat = $post['id_asal'];
+        $this->sifat_surat = $post['sifat_surat'];
+        $this->perihal = $post['note'];
+        $this->no_agenda = $post['kode_agenda'];
+        $this->file_surat = NULL;
+        $this->status = 0;
+        $this->tujuan = $post['id_tujuan'];
+        $this->kode_surat = 0;
+        $this->indeks = 1;
+        $this->disposisi = 0;
+        $this->tahun = my_filter_year();
         $this->deleted = 0;
-        $this->type = 'one';
-        $this->id_pegawai = $id_pegawai;
-        $this->note =$post['note'];
-        $this->id_profile = ID_INSTANSI;
-        $this->db->insert($this->_table, $this);
-        return $this->db->affected_rows();
+        return $this->db->insert($this->_table, $this);
     }
+
+    public function save_surat_rhs() {
+        $post = $this->input->post();
+        $this->no_surat = '-';
+        $this->tgl_surat = date('Y-m-d');
+        $this->tanggal_terima = date('Y-m-d');
+        $this->asal_surat = $post['id_asal'];
+        $this->sifat_surat = $post['sifat_surat'];
+        $this->perihal = 'surat rahasia';
+        $this->no_agenda = $post['kode_agenda'];
+        $this->file_surat = NULL;
+        $this->status = 0;
+        $this->tujuan = $post['id_tujuan'];
+        $this->kode_surat = 0;
+        $this->indeks = '-';
+        $this->disposisi = 0;
+        $this->tahun = my_filter_year();
+        $this->deleted = 0;
+        return $this->db->insert($this->_table, $this);
+    }
+
+    
+    
+    
+
+
+    // public function save($id_pegawai = "", $parent = "") {
+    //     $post = $this->input->post();
+    //     $this->bagian = $post['bagian'];
+    //     $this->parent = $parent;
+    //     $this->deleted = 0;
+    //     $this->type = 'one';
+    //     $this->id_pegawai = $id_pegawai;
+    //     $this->note =$post['note'];
+    //     $this->id_profile = ID_INSTANSI;
+    //     $this->db->insert($this->_table, $this);
+    //     return $this->db->affected_rows();
+    // }
 
     public function addNote() {
         $post = $this->input->post();

@@ -156,12 +156,28 @@ class Asaltujuan extends CI_Controller
         $row = $this->model->getLikeTujuan($name);
         if($row) {
             $res['success'] = true;
-            $res['message'] = "cari tempat";
+            $res['message'] = "cari asal tujuan";
             $res['data'] = $row;
         }
         else {
             $res['success'] = false;
-            $res['message'] = "cari tempat";
+            $res['message'] = "cari asal tujuan";
+            $res['data'] =  [];
+        }
+        echo json_encode($res);
+    }
+    
+    public function cariTujuanSurat($search = "") {
+        $name = urldecode($search);
+        $row = $this->model->getLikeTujuanSurat($name);
+        if($row) {
+            $res['success'] = true;
+            $res['message'] = "cari tujuan surat";
+            $res['data'] = $row;
+        }
+        else {
+            $res['success'] = false;
+            $res['message'] = "cari tujuan surat";
             $res['data'] =  [];
         }
         echo json_encode($res);

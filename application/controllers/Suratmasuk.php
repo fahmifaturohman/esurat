@@ -65,43 +65,47 @@ class Suratmasuk extends CI_Controller
         if ($this->input->server('REQUEST_METHOD') == "POST") { 
             $validation = $this->form_validation;
             $validation->set_rules($this->model->rules());
-           
-            if ($validation->run()) {
+            if($validation->run()) {
                 $post = $this->input->post();
-                $parent = ($post['parent'] == 0) ? NULL:$post['parent'];
-                $namaPegawai = $post['id_pegawai']; 
-                $rowPegawai = $this->model1->getByName($namaPegawai);
-                
-                if($rowPegawai) {
-                    $id_pegawai = $rowPegawai->id_user;               
-                    $row = $this->model->save($id_pegawai, $parent);
-                    
-                    if($row) {
-                        $res['success'] = true;
-                        $res['msg'] = "berhasil menambahkan data";
-                    }
-                    else {
-                        $res['success'] = false;
-                        $res['msg'] = "gagal menambahkan data";
-                    }
+                if($post['sifat_surat'] == 'rahasia') $row = $this->model->save_surat_rhs();
+                else $row = $this->model->save();               
+                if($row) {
+                    $res['success'] = true;
+                    $res['msg'] = "berhasil menambahkan data";
                 }
                 else {
                     $res['success'] = false;
-                    $res['msg'] = "Pegawai belum terdaftar, silahkan tambah pegawai terlebih dahulu";
+                    $res['msg'] = "gagal menambahkan data";
                 }
-                echo json_encode($res); 
+                echo json_encode($res);
             }
+           
+            // if ($validation->run()) {
+            //     $post = $this->input->post();
+            //     $parent = ($post['parent'] == 0) ? NULL:$post['parent'];
+            //     $namaPegawai = $post['id_pegawai']; 
+            //     $rowPegawai = $this->model1->getByName($namaPegawai);
+                
+            //     if($rowPegawai) {
+            //         $id_pegawai = $rowPegawai->id_user;               
+            //         $row = $this->model->save($id_pegawai, $parent);
+                    
+            //         if($row) {
+            //             $res['success'] = true;
+            //             $res['msg'] = "berhasil menambahkan data";
+            //         }
+            //         else {
+            //             $res['success'] = false;
+            //             $res['msg'] = "gagal menambahkan data";
+            //         }
+            //     }
+            //     else {
+            //         $res['success'] = false;
+            //         $res['msg'] = "Pegawai belum terdaftar, silahkan tambah pegawai terlebih dahulu";
+            //     }
+            //     echo json_encode($res); 
+            // }
             
-        } 
-        else {
-           $data = [
-                'page' => $this->page,
-                'title' => "Surat Masuk",
-                'last' => $this->model->getLastSuratMasuk(),
-                'js' => ['surat-masuk'],
-            ];
-            templateView("suratmasuk/add", $data);
-            #echo json_encode($data);
         }
     }
 
@@ -333,8 +337,8 @@ class Suratmasuk extends CI_Controller
         if($data) {
             $no_agenda = $data->no_agenda + 1;
         }
-        else $no_agenda = '000';
-        $next_number = $no_agenda == '000' ? '001' : str_pad((int)$no_agenda, 4, '0', STR_PAD_LEFT);
+        else $no_agenda = 1;
+        $next_number = str_pad((int)$no_agenda, 4, '0', STR_PAD_LEFT);
         $res['success'] = true;
         $res['data'] = $next_number;
         echo json_encode($res);

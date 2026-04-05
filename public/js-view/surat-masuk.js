@@ -126,6 +126,15 @@ $(document).ready(function () {
         $('#modal-delete').find('.text-modal').text(isi)
         $('#modal-delete').find('.id').val(id)
         $('#modal-add').modal("show")
+        $('#form-add')[0].reset(); 
+        $('#form-add').find('input, textarea, select').each(function() { success(this)})
+        $('.btn-sifat').addClass('btn-secondary').removeClass('btn-success')
+        $('.btn-sifat.default').addClass('btn-success').removeClass('btn-secondary')
+        $('#form-rahasia').addClass('none')
+        $('#form-biasa').removeClass('none')
+        $('#form-biasa').addClass('active-form')
+        $('#form-rahasia').removeClass('active-form')
+        $('#input-sifat').val('biasa')
     })
 
     $(document).on("click", ".btn-delete", function(e) {
@@ -145,11 +154,24 @@ $(document).ready(function () {
     })
 
 
-    /*button*/
+    /*modal form surat masuk*/
     $(document).on('click', '.btn-sifat', function() {
         let id = $(this).attr('data-id')
         $('#input-sifat').val(id)
         $(this).addClass('btn-success').removeClass('btn-secondary').siblings().removeClass('btn-success').addClass('btn-secondary')
+        if(id == 'rahasia') {
+            $('#form-rahasia').removeClass('none')
+            $('#form-biasa').addClass('none')
+            $('#form-biasa').removeClass('active-form')
+            $('#form-rahasia').addClass('active-form')
+        } else {
+            $('#form-rahasia').addClass('none')
+            $('#form-biasa').removeClass('none')
+            $('#form-biasa').addClass('active-form')
+            $('#form-rahasia').removeClass('active-form')
+        }
+        $('#form-add')[0].reset(); 
+        $('#form-add').find('input, textarea, select').each(function() { success(this)})
     })
     $(document).on('click','.btn-agenda-auto', function() {
         $('.btn-agenda-manual').removeClass('btn-success').addClass('btn-outline-secondary')
@@ -161,7 +183,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function(res) {
                 $('#input-kode-agenda').attr('readonly', 'readonly').val(res['data'])
-                console.log(res['data'])
+                $('#input-kode-agenda').val(res['data'])
             }
         })
     })
@@ -179,11 +201,23 @@ $(document).ready(function () {
         if(val.length > 0) validateAjaxGet(baseUrl+"suratmasuk/validnoagenda/"+val, "#input-kode-agenda")
         else error(this, "*wajib diisi")
     })
-
-    $( ".datepicker-surat" ).datepicker({
+    $(document).on('keyup','#input-nomor-surat, #input-tanggal-surat, #input-cari-asal-surat, #input-cari-tujuan-surat', function() {
+        let val = $(this).val()
+        if(val.length <= 0) error(this, "*wajib diisi")
+        else success(this)
+    }).blur('#input-nomor-surat, .datepicker-surat, #input-cari-asal-surat, #input-cari-tujuan-surat', function() {
+        let val = $(this).val()
+        if(val.length <= 0) error(this, "*wajib diisi")
+        else success(this)
+    }).change('#input-tanggal-surat', function(){
+        success('#input-tanggal-surat')
+    });
+    $(".datepicker-surat" ).datepicker({
         format: 'dd/mm/yyyy', //
-        autoclose: true 
+        autoclose: true,
     })
+
+    let arrAsalTujuan = [];
     $('.input-asal-surat').typeahead({
         source: function (query, result) {
             $.ajax({
@@ -191,18 +225,82 @@ $(document).ready(function () {
                 dataType: "json",
                 type: "GET",
                 success: function (data) {
+                    arrAsalTujuan = []
                     let asalTujuan = data['data'];
-                    var arrAsalTujuan = [];
                     asalTujuan.forEach(el => {
-                       arrAsalTujuan.push(el['asal_tujuan']);
+                      arrAsalTujuan.push({
+                            id: el['id_asal_tujuan'],
+                            name: el['asal_tujuan']
+                        });
                     });
-                    
-                    //show autocomplete
                     result($.map(arrAsalTujuan, function (item) {
-                        return item;
+                        return item.name;
                     }));
                 }
             });
+        },afterSelect: function (item) {
+            let selected = arrAsalTujuan.find(x => x.name === item)
+                if (selected) {
+                    $('#input-cari-asal-surat').val(selected.name)
+                    $('#id_asal').val(selected.id)
+                    $('#input-cari-asal-surat-rhs').val(selected.name)
+                    $('#id_asal_rhs').val(selected.id)
+                }
+            }
+    })
+    
+    let arrTujuan = [];
+    $('.input-tujuan-surat').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: baseUrl+"asaltujuan/cariTujuanSurat/"+query,
+                dataType: "json",
+                type: "GET",
+                success: function (data) {
+                    arrTujuan = []
+                    let tujuan = data['data'];
+                    tujuan.forEach(el => {
+                       arrTujuan.push({
+                            id: el['id_tujuan'],
+                            name: el['nama_tujuan']
+                       });
+                    });
+                    
+                    //show autocomplete
+                    result($.map(arrTujuan, function (item) {
+                        return item.name;
+                    }));
+                }
+            });
+        }, afterSelect: function (item) {
+            let selected = arrTujuan.find(x => x.name === item)
+                if (selected) {
+                    $('#input-cari-tujuan-surat').val(selected.name)
+                    $('#id_tujuan').val(selected.id)
+                    $('#input-cari-tujuan-surat-rhs').val(selected.name)
+                    $('#id_tujuan_rhs').val(selected.id)
+                }
+        }
+    })
+     $(document).on('submit','#form-add', function(e) {
+        e.preventDefault()
+        let valid = true
+        
+        $(this).find('.active-form, .form-no-agenda').find('input, textarea, select').each(function() {
+            if(!$(this).val()) {
+                error(this,"Silahkan lengkapi form !");
+                valid= false;
+            }
+
+            if ($(this).hasClass('is-invalid')){
+                valid = false;
+            }
+        })
+
+        if(valid) {
+            postAjax("suratmasuk/add", "#form-add")
+            $('#modal-add').modal("hide")
+            tabel.ajax.reload()
         }
     })
     
