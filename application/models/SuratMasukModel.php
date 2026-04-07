@@ -100,7 +100,7 @@ class SuratMasukModel extends CI_Model
         $this->sifat_surat = $post['sifat_surat'];
         $this->perihal = $post['note'];
         $this->no_agenda = $post['kode_agenda'];
-        $this->file_surat = NULL;
+        $this->file_surat = '-';
         $this->status = 0;
         $this->tujuan = $post['id_tujuan'];
         $this->kode_surat = 0;
@@ -120,7 +120,7 @@ class SuratMasukModel extends CI_Model
         $this->sifat_surat = $post['sifat_surat'];
         $this->perihal = 'surat rahasia';
         $this->no_agenda = $post['kode_agenda'];
-        $this->file_surat = NULL;
+        $this->file_surat = '-';
         $this->status = 0;
         $this->tujuan = $post['id_tujuan'];
         $this->kode_surat = 0;
@@ -194,13 +194,13 @@ class SuratMasukModel extends CI_Model
     public function delete() {
         $post = $this->input->post();
         $this->db->set('deleted', 1);
-        $this->db->where('id_struktur', $post['id']);
+        $this->db->where('id', $post['id']);
         $this->db->update($this->_table);
         return $this->db->affected_rows();
     }
 
     public function hardDelete($id) {
-        $this->db->delete($this->_table, ['id_struktur' => $id, 'deleted' => 1]);
+        $this->db->delete($this->_table, ['id' => $id, 'deleted' => 1]);
         return $this->db->affected_rows();
     }
 

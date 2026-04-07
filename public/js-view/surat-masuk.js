@@ -1,3 +1,21 @@
+
+function resetFrom(id) {
+    $('#form-add')[0].reset(); 
+    $('#form-add').find('input, textarea, select').each(function() { success(this)})
+    $('#input-sifat').val(id)
+    if(id == 'rahasia') {
+        $('#form-rahasia').removeClass('none')
+        $('#form-biasa').addClass('none')
+        $('#form-biasa').removeClass('active-form')
+        $('#form-rahasia').addClass('active-form')
+    } else {
+        $('#form-rahasia').addClass('none')
+        $('#form-biasa').removeClass('none')
+        $('#form-biasa').addClass('active-form')
+        $('#form-rahasia').removeClass('active-form')
+    }
+}
+
 $(document).ready(function () {
 
     $(document).on('change','.check-input-manual', function(){
@@ -80,10 +98,6 @@ $(document).ready(function () {
         }
     });
        
-   
-
-
-
     $(document).on('submit','#form-submit', function(e) {
         e.preventDefault()
         let valid = true
@@ -121,26 +135,13 @@ $(document).ready(function () {
     })
 
     $(document).on("click",".btn-add", function(e) {
-        let id = $(this).attr('data-id')
-        let isi= $(this).attr('data-isi')
-        $('#modal-delete').find('.text-modal').text(isi)
-        $('#modal-delete').find('.id').val(id)
+        let id = $('.btn-sifat.btn-success').attr('data-id')
         $('#modal-add').modal("show")
-        $('#form-add')[0].reset(); 
-        $('#form-add').find('input, textarea, select').each(function() { success(this)})
-        $('.btn-sifat').addClass('btn-secondary').removeClass('btn-success')
-        $('.btn-sifat.default').addClass('btn-success').removeClass('btn-secondary')
-        $('#form-rahasia').addClass('none')
-        $('#form-biasa').removeClass('none')
-        $('#form-biasa').addClass('active-form')
-        $('#form-rahasia').removeClass('active-form')
-        $('#input-sifat').val('biasa')
+        resetFrom(id)
     })
 
     $(document).on("click", ".btn-delete", function(e) {
         let id = $(this).attr('data-id')
-        let isi= $(this).attr('data-isi')
-        $('#modal-delete').find('.text-modal').text(isi)
         $('#modal-delete').find('.id').val(id)
         $('#modal-delete').modal("show")
     })
@@ -150,28 +151,16 @@ $(document).ready(function () {
         let id = $('.id').val()
         let valid = false
         $('#modal-delete').modal('hide')
-        postAjax("pimpinan/delete", ".btn-delete-yes", {'id':id}, 0)
+        deleteAjax("suratmasuk/delete", ".btn-delete-yes", {'id':id})
+        tabel.ajax.reload()
     })
 
 
     /*modal form surat masuk*/
     $(document).on('click', '.btn-sifat', function() {
         let id = $(this).attr('data-id')
-        $('#input-sifat').val(id)
         $(this).addClass('btn-success').removeClass('btn-secondary').siblings().removeClass('btn-success').addClass('btn-secondary')
-        if(id == 'rahasia') {
-            $('#form-rahasia').removeClass('none')
-            $('#form-biasa').addClass('none')
-            $('#form-biasa').removeClass('active-form')
-            $('#form-rahasia').addClass('active-form')
-        } else {
-            $('#form-rahasia').addClass('none')
-            $('#form-biasa').removeClass('none')
-            $('#form-biasa').addClass('active-form')
-            $('#form-rahasia').removeClass('active-form')
-        }
-        $('#form-add')[0].reset(); 
-        $('#form-add').find('input, textarea, select').each(function() { success(this)})
+        resetFrom(id)
     })
     $(document).on('click','.btn-agenda-auto', function() {
         $('.btn-agenda-manual').removeClass('btn-success').addClass('btn-outline-secondary')
@@ -243,8 +232,6 @@ $(document).ready(function () {
                 if (selected) {
                     $('#input-cari-asal-surat').val(selected.name)
                     $('#id_asal').val(selected.id)
-                    $('#input-cari-asal-surat-rhs').val(selected.name)
-                    $('#id_asal_rhs').val(selected.id)
                 }
             }
     })
@@ -275,10 +262,8 @@ $(document).ready(function () {
         }, afterSelect: function (item) {
             let selected = arrTujuan.find(x => x.name === item)
                 if (selected) {
-                    $('#input-cari-tujuan-surat').val(selected.name)
-                    $('#id_tujuan').val(selected.id)
-                    $('#input-cari-tujuan-surat-rhs').val(selected.name)
-                    $('#id_tujuan_rhs').val(selected.id)
+                    $('.active-form').find('#input-cari-tujuan-surat').val(selected.name)
+                    $('.active-form').find('#id_tujuan').val(selected.id)
                 }
         }
     })

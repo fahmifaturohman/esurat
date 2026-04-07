@@ -143,3 +143,12 @@ function my_filter_year() {
     if(!empty($val)) return $ci->encrypt->decode($val, MY_KEY);
     else return CURRENT_YEAR;
 }
+
+function my_enc($str) {
+     $ci = get_instance();
+     return $ci->encrypt->encode($str, MY_KEY);
+}
+function my_dec($str) {
+     $ci = get_instance();
+     return $ci->encrypt->decode($str,MY_KEY);
+}

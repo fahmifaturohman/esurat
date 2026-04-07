@@ -78,34 +78,7 @@ class Suratmasuk extends CI_Controller
                     $res['msg'] = "gagal menambahkan data";
                 }
                 echo json_encode($res);
-            }
-           
-            // if ($validation->run()) {
-            //     $post = $this->input->post();
-            //     $parent = ($post['parent'] == 0) ? NULL:$post['parent'];
-            //     $namaPegawai = $post['id_pegawai']; 
-            //     $rowPegawai = $this->model1->getByName($namaPegawai);
-                
-            //     if($rowPegawai) {
-            //         $id_pegawai = $rowPegawai->id_user;               
-            //         $row = $this->model->save($id_pegawai, $parent);
-                    
-            //         if($row) {
-            //             $res['success'] = true;
-            //             $res['msg'] = "berhasil menambahkan data";
-            //         }
-            //         else {
-            //             $res['success'] = false;
-            //             $res['msg'] = "gagal menambahkan data";
-            //         }
-            //     }
-            //     else {
-            //         $res['success'] = false;
-            //         $res['msg'] = "Pegawai belum terdaftar, silahkan tambah pegawai terlebih dahulu";
-            //     }
-            //     echo json_encode($res); 
-            // }
-            
+            }            
         }
     }
 
@@ -165,9 +138,6 @@ class Suratmasuk extends CI_Controller
                 $res['msg'] = "gagal menghapus data";
             }
             echo json_encode($res);
-        }
-        else {
-            redirect('errorpage');  
         }
     }
 

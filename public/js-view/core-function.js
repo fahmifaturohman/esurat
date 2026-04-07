@@ -67,23 +67,6 @@ function validateAjaxGet(myUrl ="", id ="") {
     })
 }
 
-function ajaxDelete(myUrl ="", go = 0) {
-	loading()
-    $.ajax({
-        type: "GET",
-        url: baseUrl+myUrl,
-        dataType: "json",
-        success: function (res) {
-            if(res['success'] == true) {                        
-				toastNotify(res['msg'])
-				setTimeout(function () { history.go(go)}, 500)
-			}
-			else toastNotify(res['msg'],0)
-			loadingClose()
-        }
-    })
-}
-
 function postAjax(myurl = "", id = "", param = "", go = -1) {
 	//loading()
 	if(param == "") var dataPost = $(id).serialize()
@@ -123,6 +106,31 @@ function postAjaxLogin(myurl = "", id = "", param = "") {
 			if(res['success'] == true) {                        
 				toastNotify(res['msg'])
 				window.location = baseUrl;
+			}
+			else toastNotify(res['msg'],0)
+			loadingClose()
+		},
+		error: function (res) {
+			console.log(res['responseJSON'])
+		},
+		failure: function (res) {
+			console.log("failure")
+		}
+	}) 
+}
+
+function deleteAjax(myurl = "", id = "", param = "",) {
+	loading()
+	if(param == "") var dataPost = $(id).serialize()
+	else var dataPost = param
+	$.ajax({
+		type: "POST",
+		url: baseUrl+myurl,
+		data: dataPost,
+		dataType: "json",
+		success: function (res) {			
+			if(res['success'] == true) {                        
+				toastNotify(res['msg'])
 			}
 			else toastNotify(res['msg'],0)
 			loadingClose()

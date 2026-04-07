@@ -54,7 +54,7 @@
 	<div class="modal-dialog modal-md" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h6 class="modal-title" id="myModalLabel-2">FORM TAMBAH SURAT MASUK</h6>
+				<h6 class="modal-title" id="myModalLabel-2">FORM TAMBAH SURAT MASUK TAHUN <?=my_filter_year()?></h6>
 			</div>
             <form id="form-add">
 			<div class="modal-body">
@@ -83,8 +83,8 @@
                         <div class="form-group">
                             <label for="input-cari-asal">Asal Surat</label>
                             <div class="input-group">
-                                <input type="hidden" name="id_asal" id="id_asal_rhs"> 
-                                <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat-rhs" placeholder="cari asal surat" autocomplete="off">
+                                <input type="hidden" name="id_asal" id="id_asal"> 
+                                <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat" placeholder="cari asal surat" autocomplete="off">
                                 <div class="input-group-append">
                                     <a target="_blank" href="<?= base_url('asaltujuan') ?>" class="btn btn-success" type="button"><i class="fa fa-plus"></i></a>
                                 </div>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group">
                             <label for="input-cari-tujuan">Tujuan Surat</label>
-                            <input type="hidden" name="id_tujuan" id="id_tujuan_rhs"> 
+                            <input type="hidden" name="id_tujuan" id="id_tujuan"> 
                             <input type="text" name="tujuan_surat" class="form-control typeahead input-tujuan-surat" id="input-cari-tujuan-surat-rhs" placeholder="cari tujuan surat" autocomplete="off">
                             <span class="text-danger"></span>
                         </div>    
@@ -144,7 +144,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Submit</button>
+				<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">SIMPAN</button>
 			</div>
             </form>
 		</div>
@@ -279,7 +279,7 @@
                 {"data": function(data,type,dataToSet) {
                         str = `<div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="<?=base_url("suratmasuk/edit/")?>${data.id}" type="button" class="btn waves-effect waves-light btn-sm btn-primary"><i class="ion-edit"></i></a>
-                                    <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id}" data-isi ="${data.id}"><i class="ion-trash-a"></i></a>
+                                    <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-secondary btn-delete" data-toggle="modal" data-id="${data.id}"><i class="ion-trash-a"></i></a>
                                     <a href="#" type="button" class="btn waves-effect waves-light btn-sm btn-dark btn-view"><i class="ion-ios7-eye"></i></a>
                                     <a href="<?=dirUpload()?>masuk/${data.file_surat}" class="btn waves-effect waves-light btn-sm btn-success" target="_blank" download="${data.file_surat}"><i class="ion-ios7-cloud-download"></i></a>
                                     <a href="<?=base_url("suratmasuk/disposisi/")?>${data.id}" type="button" class="btn btn-sm btn-outline-primary waves-effect waves-light">Disposisikan</a>
