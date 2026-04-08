@@ -262,8 +262,8 @@ $(document).ready(function () {
         }, afterSelect: function (item) {
             let selected = arrTujuan.find(x => x.name === item)
                 if (selected) {
-                    $('.active-form').find('#input-cari-tujuan-surat').val(selected.name)
-                    $('.active-form').find('#id_tujuan').val(selected.id)
+                    $('#input-cari-tujuan-surat').val(selected.name)
+                    $('#id_tujuan').val(selected.id)
                 }
         }
     })

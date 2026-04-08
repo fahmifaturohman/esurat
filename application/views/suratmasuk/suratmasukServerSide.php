@@ -80,23 +80,6 @@
 
                 <div class="row none" id="form-rahasia">
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="input-cari-asal">Asal Surat</label>
-                            <div class="input-group">
-                                <input type="hidden" name="id_asal" id="id_asal"> 
-                                <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat" placeholder="cari asal surat" autocomplete="off">
-                                <div class="input-group-append">
-                                    <a target="_blank" href="<?= base_url('asaltujuan') ?>" class="btn btn-success" type="button"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                            <span class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-cari-tujuan">Tujuan Surat</label>
-                            <input type="hidden" name="id_tujuan" id="id_tujuan"> 
-                            <input type="text" name="tujuan_surat" class="form-control typeahead input-tujuan-surat" id="input-cari-tujuan-surat-rhs" placeholder="cari tujuan surat" autocomplete="off">
-                            <span class="text-danger"></span>
-                        </div>    
                     </div>
                 </div>
 
@@ -118,28 +101,29 @@
                             <span class="col-12 text-danger row"></span>
                         </div>
                         <div class="form-group">
-                            <label for="input-cari-asal">Asal Surat</label>
-                            <div class="input-group">
-                                <input type="hidden" name="id_asal" id="id_asal"> 
-                                <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat" placeholder="cari asal surat" autocomplete="off">
-                                <div class="input-group-append">
-                                    <a target="_blank" href="<?= base_url('asaltujuan') ?>" class="btn btn-success" type="button"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                            <span class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-cari-tujuan">Tujuan Surat</label>
-                            <input type="hidden" name="id_tujuan" id="id_tujuan"> 
-                            <input type="text" name="tujuan_surat" class="form-control typeahead input-tujuan-surat" id="input-cari-tujuan-surat" placeholder="cari tujuan surat" autocomplete="off">
-                            <span class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
                             <label for="input-note-modal">Perihal/Catatan Surat</label>
                             <textarea name="note" id="input-note" cols="30" rows="2" class="form-control"></textarea>
                             <span class="text-danger"></span>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-cari-asal">Asal Surat</label>
+                    <div class="input-group">
+                        <input type="hidden" name="id_asal" id="id_asal"> 
+                        <input type="text" name="asal_surat" class="form-control typeahead input-asal-surat" id="input-cari-asal-surat" placeholder="cari asal surat" autocomplete="off">
+                        <div class="input-group-append">
+                            <a target="_blank" href="<?= base_url('asaltujuan') ?>" class="btn btn-success" type="button"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="input-cari-tujuan">Tujuan Surat</label>
+                    <input type="hidden" name="id_tujuan" id="id_tujuan"> 
+                    <input type="text" name="tujuan_surat" class="form-control typeahead input-tujuan-surat" id="input-cari-tujuan-surat" placeholder="cari tujuan surat" autocomplete="off">
+                    <span class="text-danger"></span>
                 </div>
 			</div>
 			<div class="modal-footer">
